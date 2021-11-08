@@ -3651,7 +3651,7 @@ SELECT IdDetalle, NroOrden, NroItem, Descripcion, Cantidad FROM TbDetalleCompra 
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = global::Presentacion_IU.Properties.Settings.Default.DBDematazoConnectionString;
+            this._connection.ConnectionString = global::Presentacion_IU.Properties.Settings.Default.DBDematazoConnectionString1;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -4062,7 +4062,7 @@ SELECT Codigo, Descripcion_Articulo, Material FROM TbMaterial WHERE (Codigo = @C
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = global::Presentacion_IU.Properties.Settings.Default.DBDematazoConnectionString;
+            this._connection.ConnectionString = global::Presentacion_IU.Properties.Settings.Default.DBDematazoConnectionString1;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -4427,17 +4427,24 @@ SELECT NroOrdenCompra, Fecha, NroProveedor, NroPersonal FROM TbOrdenCompra WHERE
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = global::Presentacion_IU.Properties.Settings.Default.DBDematazoConnectionString;
+            this._connection.ConnectionString = global::Presentacion_IU.Properties.Settings.Default.DBDematazoConnectionString1;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         private void InitCommandCollection() {
-            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
+            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[2];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
             this._commandCollection[0].CommandText = "SELECT NroOrdenCompra, Fecha, NroProveedor, NroPersonal FROM dbo.TbOrdenCompra";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[1] = new global::System.Data.SqlClient.SqlCommand();
+            this._commandCollection[1].Connection = this.Connection;
+            this._commandCollection[1].CommandText = @"SELECT        TbOrdenCompra.NroOrdenCompra, TbOrdenCompra.Fecha, TbOrdenCompra.NroProveedor, TbProveedores.RazonSocial, TbOrdenCompra.NroPersonal, TbPersonal.Apellido, TbPersonal.Nombre
+FROM            TbOrdenCompra INNER JOIN
+                         TbPersonal ON TbOrdenCompra.NroPersonal = TbPersonal.NroPersonal INNER JOIN
+                         TbProveedores ON TbOrdenCompra.NroProveedor = TbProveedores.NroProveedor";
+            this._commandCollection[1].CommandType = global::System.Data.CommandType.Text;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -4459,6 +4466,30 @@ SELECT NroOrdenCompra, Fecha, NroProveedor, NroPersonal FROM TbOrdenCompra WHERE
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
         public virtual DBDematazoDataSet.TbOrdenCompraDataTable GetData() {
             this.Adapter.SelectCommand = this.CommandCollection[0];
+            DBDematazoDataSet.TbOrdenCompraDataTable dataTable = new DBDematazoDataSet.TbOrdenCompraDataTable();
+            this.Adapter.Fill(dataTable);
+            return dataTable;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, false)]
+        public virtual int FillBy(DBDematazoDataSet.TbOrdenCompraDataTable dataTable) {
+            this.Adapter.SelectCommand = this.CommandCollection[1];
+            if ((this.ClearBeforeFill == true)) {
+                dataTable.Clear();
+            }
+            int returnValue = this.Adapter.Fill(dataTable);
+            return returnValue;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, false)]
+        public virtual DBDematazoDataSet.TbOrdenCompraDataTable GetDataByOrdenCompras() {
+            this.Adapter.SelectCommand = this.CommandCollection[1];
             DBDematazoDataSet.TbOrdenCompraDataTable dataTable = new DBDematazoDataSet.TbOrdenCompraDataTable();
             this.Adapter.Fill(dataTable);
             return dataTable;
@@ -4840,7 +4871,7 @@ SELECT NroPersonal, Nombre, Apellido, Documento, Salario, Rol, Password FROM TbP
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = global::Presentacion_IU.Properties.Settings.Default.DBDematazoConnectionString;
+            this._connection.ConnectionString = global::Presentacion_IU.Properties.Settings.Default.DBDematazoConnectionString1;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -5352,7 +5383,7 @@ SELECT NroProveedor, Nombre, Apellido, RazonSocial, CUIT, Email, Telefono, Local
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = global::Presentacion_IU.Properties.Settings.Default.DBDematazoConnectionString;
+            this._connection.ConnectionString = global::Presentacion_IU.Properties.Settings.Default.DBDematazoConnectionString1;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -5894,7 +5925,7 @@ SELECT NroProveedor, Nombre, Apellido, RazonSocial, CUIT, Email, Telefono, Local
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = global::Presentacion_IU.Properties.Settings.Default.DBDematazoConnectionString;
+            this._connection.ConnectionString = global::Presentacion_IU.Properties.Settings.Default.DBDematazoConnectionString1;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]

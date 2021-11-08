@@ -61,5 +61,27 @@ namespace Presentacion_IU
         {
 
         }
+
+        private void informeGeneralToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FrmInformePersonal ofrmInformesGenerales = new FrmInformePersonal();
+            ofrmInformesGenerales.Show();
+        }
+
+        private void listaDePreciosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void listaDePrecioProveedoresToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void listaDePrecioProveedoresToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FrmListaPrecioProveedores oFrmListaPreciosProveedores = new FrmListaPrecioProveedores();
+            oFrmListaPreciosProveedores.Show();
+        }
     }
 }

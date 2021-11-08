@@ -41,6 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BE_Arandela.cs" />
     <Compile Include="BE_DetalleOrdenCompra.cs" />
     <Compile Include="BE_Login.cs" />
     <Compile Include="BE_Materiales.cs" />

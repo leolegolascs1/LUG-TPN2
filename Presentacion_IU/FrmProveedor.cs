@@ -18,10 +18,8 @@ namespace Presentacion_IU
         public FrmProveedor()
         {
             InitializeComponent();
-
             oBLL_Proveedor = new BLL_Proveedor();
         }
-
         private void FrmProveedor_Load(object sender, EventArgs e)
         {
             MostrarGrilla(dtgProveedores , oBLL_Proveedor.ListarTodo()); //Cargo el grid con el listado de proveedores
@@ -31,6 +29,7 @@ namespace Presentacion_IU
             try
             {
                 LimpiarCampos();
+                string[] splitCUIT;
                 BE_Proveedor _Filaseleccion = dtgProveedores.SelectedRows[0].DataBoundItem as BE_Proveedor; //Selecciono el objeto del grid
                 if (_Filaseleccion != null) //Si hay una seleccion cargo los datos.
                 {
@@ -38,7 +37,13 @@ namespace Presentacion_IU
                     tbxApellido.Text = _Filaseleccion.Apellido;
                     tbxNombre.Text = _Filaseleccion.Nombre;
                     tbxRazonSocial.Text = _Filaseleccion.RazonSocial;
-                    tbxCUIT.Text = _Filaseleccion.CUIT;
+
+                    splitCUIT = _Filaseleccion.CUIT.Split('-');
+
+                    tbxCUIT1.Text = splitCUIT[0];
+                    tbxCUIT2.Text = splitCUIT[1];
+                    tbxCUIT3.Text = splitCUIT[2];
+
                     tbxEmail.Text = _Filaseleccion.EMail;
                     tbxTelefono.Text = _Filaseleccion.Telefono;
                     tbxLocalidad.Text = _Filaseleccion.Localidad;
@@ -59,15 +64,37 @@ namespace Presentacion_IU
             try
             {
                 //Verifico que los datos enten cargados
-                if (tbxApellido.Text.Length > 0 || tbxNombre.Text.Length > 0 || tbxRazonSocial.Text.Length > 0 || tbxCUIT.Text.Length > 0 || tbxEmail.Text.Length > 0 || tbxTelefono.Text.Length > 0 || tbxLocalidad.Text.Length > 0 || tbxDireccion.Text.Length > 0)
+                if (tbxApellido.Text.Length > 0 || tbxNombre.Text.Length > 0 || tbxRazonSocial.Text.Length > 0 || tbxCUIT1.Text.Length > 0 || tbxEmail.Text.Length > 0 || tbxTelefono.Text.Length > 0 || tbxLocalidad.Text.Length > 0 || tbxDireccion.Text.Length > 0)
                 {
-                    LLenarObjeto();
-                    if (oBLL_Proveedor.Guardar(oProveedor)) //Guardo el objeto cargado, si es ok muestro msj
+                    if(CL_Validar.EsTexto(tbxNombre.Text) && CL_Validar.EsTexto(tbxApellido.Text)) 
                     {
-                        MessageBox.Show("Registro Guardado Correctamente", "Modificar", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+
+                        if (CL_Validar.EsNumerico(tbxTelefono.Text)) 
+                        {
+                            if (CL_Validar.ValidarFormatoMail(tbxEmail.Text)) 
+                            {
+                                LLenarObjeto();
+                                if (oBLL_Proveedor.Guardar(oProveedor)) //Guardo el objeto cargado, si es ok muestro msj
+                                {
+                                    MessageBox.Show("Registro Guardado Correctamente", "Modificar", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                                }
+                                LimpiarCampos();
+                                MostrarGrilla(dtgProveedores, oBLL_Proveedor.ListarTodo()); //Muestro listado proveedor.
+                            }
+                            else
+                            {
+                                MessageBox.Show("Ingrese un formato de mail correcto!", "Modificar", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                            }
+                        }
+                        else 
+                        {
+                            MessageBox.Show("Por Favor Ingrese valores numéricos para el teléfono!", "Modificar", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                        }
                     }
-                    LimpiarCampos();
-                    MostrarGrilla(dtgProveedores, oBLL_Proveedor.ListarTodo()); //Muestro listado proveedor.
+                    else
+                    {
+                        MessageBox.Show("Por Favor Ingrese texto para el Nombre o Apellido!", "Modificar", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    }
                 }
                 else
                 {
@@ -127,7 +154,7 @@ namespace Presentacion_IU
             oProveedor.Apellido = tbxApellido.Text;
             oProveedor.Nombre = tbxNombre.Text;
             oProveedor.RazonSocial = tbxRazonSocial.Text;
-            oProveedor.CUIT = tbxCUIT.Text;
+            oProveedor.CUIT = tbxCUIT1.Text + "-"+tbxCUIT2.Text  + "-" + tbxCUIT3.Text;
             oProveedor.EMail = tbxEmail.Text;
             oProveedor.Telefono = tbxTelefono.Text;
             oProveedor.Localidad = tbxLocalidad.Text;
@@ -147,7 +174,9 @@ namespace Presentacion_IU
             tbxApellido.Text = "";
             tbxNombre.Text = "";
             tbxRazonSocial.Text = "";
-            tbxCUIT.Text = "";
+            tbxCUIT1.Text = "";
+            tbxCUIT2.Text = "";
+            tbxCUIT3.Text = "";
             tbxEmail.Text = "";
             tbxTelefono.Text = "";
             tbxLocalidad.Text = "";

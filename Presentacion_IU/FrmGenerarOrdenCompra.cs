@@ -68,7 +68,7 @@ namespace Presentacion_IU
             cbxPersonal.SelectedItem = null;
 
             cbxItems.DataSource = oBLLMaterial.ListarTodo();
-            cbxItems.DisplayMember = "Descripcion_Material";
+            cbxItems.DisplayMember = "Descripcion_material";
             cbxItems.ValueMember = "Codigo";
             cbxItems.SelectedItem = null;
         }
@@ -90,7 +90,14 @@ namespace Presentacion_IU
                              
                                 if(oBEOrdenCompra.LstItems.Exists(x=>x.Codigo == oBEMaterial.Codigo) == false) //Si el item no esta repetido lo agrego
                                 {
-                                    oBLLOrdenCompra.AgregarItemCompra(oBEOrdenCompra, oBEMaterial, int.Parse(tbxCantidad.Text)); //Guardo el detalle-
+                                    //oBLLOrdenCompra.AgregarItemCompra(oBEOrdenCompra, oBEMaterial, int.Parse(tbxCantidad.Text)); //Guardo el detalle-
+
+                                    oBEDetalleOrden = new BE_DetalleOrdenCompra();
+                                    oBEDetalleOrden.NroOrden = oBEOrdenCompra.Codigo;
+                                    oBEDetalleOrden.Cantidad = int.Parse(tbxCantidad.Text);
+                                    oBEDetalleOrden.Item = oBEMaterial;
+                                    oBLLDetalleOrden.Guardar(oBEDetalleOrden);
+
                                     MostrarGrilla(dtgDetalleItems, oBLLOrdenCompra.ListarTodo());
                                 }
                                 else

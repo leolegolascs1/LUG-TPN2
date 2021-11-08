@@ -56,26 +56,21 @@ namespace MPP
             AL.Add(Param2);
 
             SqlParameter Param3 = new SqlParameter();
-            Param3.ParameterName = "@Cantidad";
-            Param3.Value = Objeto.Cantidad;
+            Param3.ParameterName = "@Descripcion";
+            Param3.Value = Objeto.Item.Descripcion_material;
             Param3.SqlDbType = SqlDbType.Int;
             AL.Add(Param3);
+
+            SqlParameter Param4 = new SqlParameter();
+            Param4.ParameterName = "@Cantidad";
+            Param4.Value = Objeto.Cantidad;
+            Param4.SqlDbType = SqlDbType.Int;
+            AL.Add(Param4);
 
             oDatos = new Acceso();
             return oDatos.Escribir2(Consulta_SQL, AL);
         }
-
-        public BE_DetalleOrdenCompra ListarObjeto(BE_DetalleOrdenCompra Objeto)
-        {
-            throw new NotImplementedException();
-        }
-
         public List<BE_DetalleOrdenCompra> ListarTodo()
-        {
-            throw new NotImplementedException();
-        }
-
-        public DataTable ListarTodoTable()
         {
             throw new NotImplementedException();
         }

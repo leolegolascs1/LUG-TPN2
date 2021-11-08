@@ -44,7 +44,7 @@
             this.tbxApellido = new System.Windows.Forms.TextBox();
             this.tbxNombre = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.tbxCUIT = new System.Windows.Forms.TextBox();
+            this.tbxCUIT1 = new System.Windows.Forms.TextBox();
             this.lblTelefono = new System.Windows.Forms.Label();
             this.lblCUIT = new System.Windows.Forms.Label();
             this.lblDireccion = new System.Windows.Forms.Label();
@@ -54,6 +54,10 @@
             this.lblNroProveedor = new System.Windows.Forms.Label();
             this.lblApellido = new System.Windows.Forms.Label();
             this.lblTitulo = new System.Windows.Forms.Label();
+            this.tbxCUIT2 = new System.Windows.Forms.TextBox();
+            this.tbxCUIT3 = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
             this.tabProveedor.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.gbxControles.SuspendLayout();
@@ -72,6 +76,10 @@
             // tabPage1
             // 
             this.tabPage1.BackColor = System.Drawing.SystemColors.InactiveCaption;
+            this.tabPage1.Controls.Add(this.label3);
+            this.tabPage1.Controls.Add(this.label2);
+            this.tabPage1.Controls.Add(this.tbxCUIT3);
+            this.tabPage1.Controls.Add(this.tbxCUIT2);
             this.tabPage1.Controls.Add(this.gbxControles);
             this.tabPage1.Controls.Add(this.tbxNroProveedor);
             this.tabPage1.Controls.Add(this.dtgProveedores);
@@ -83,7 +91,7 @@
             this.tabPage1.Controls.Add(this.tbxApellido);
             this.tabPage1.Controls.Add(this.tbxNombre);
             this.tabPage1.Controls.Add(this.label1);
-            this.tabPage1.Controls.Add(this.tbxCUIT);
+            this.tabPage1.Controls.Add(this.tbxCUIT1);
             this.tabPage1.Controls.Add(this.lblTelefono);
             this.tabPage1.Controls.Add(this.lblCUIT);
             this.tabPage1.Controls.Add(this.lblDireccion);
@@ -166,14 +174,14 @@
             this.tbxDireccion.Location = new System.Drawing.Point(211, 237);
             this.tbxDireccion.Name = "tbxDireccion";
             this.tbxDireccion.Size = new System.Drawing.Size(205, 20);
-            this.tbxDireccion.TabIndex = 9;
+            this.tbxDireccion.TabIndex = 10;
             // 
             // tbxLocalidad
             // 
             this.tbxLocalidad.Location = new System.Drawing.Point(211, 211);
             this.tbxLocalidad.Name = "tbxLocalidad";
             this.tbxLocalidad.Size = new System.Drawing.Size(205, 20);
-            this.tbxLocalidad.TabIndex = 8;
+            this.tbxLocalidad.TabIndex = 9;
             // 
             // tbxRazonSocial
             // 
@@ -187,14 +195,14 @@
             this.tbxTelefono.Location = new System.Drawing.Point(211, 185);
             this.tbxTelefono.Name = "tbxTelefono";
             this.tbxTelefono.Size = new System.Drawing.Size(205, 20);
-            this.tbxTelefono.TabIndex = 7;
+            this.tbxTelefono.TabIndex = 8;
             // 
             // tbxEmail
             // 
             this.tbxEmail.Location = new System.Drawing.Point(211, 159);
             this.tbxEmail.Name = "tbxEmail";
             this.tbxEmail.Size = new System.Drawing.Size(205, 20);
-            this.tbxEmail.TabIndex = 6;
+            this.tbxEmail.TabIndex = 7;
             // 
             // tbxApellido
             // 
@@ -219,12 +227,12 @@
             this.label1.TabIndex = 3;
             this.label1.Text = "Telefono:";
             // 
-            // tbxCUIT
+            // tbxCUIT1
             // 
-            this.tbxCUIT.Location = new System.Drawing.Point(211, 133);
-            this.tbxCUIT.Name = "tbxCUIT";
-            this.tbxCUIT.Size = new System.Drawing.Size(107, 20);
-            this.tbxCUIT.TabIndex = 4;
+            this.tbxCUIT1.Location = new System.Drawing.Point(211, 133);
+            this.tbxCUIT1.Name = "tbxCUIT1";
+            this.tbxCUIT1.Size = new System.Drawing.Size(36, 20);
+            this.tbxCUIT1.TabIndex = 4;
             // 
             // lblTelefono
             // 
@@ -308,6 +316,38 @@
             this.lblTitulo.TabIndex = 8;
             this.lblTitulo.Text = "MENU PROVEEDOR";
             // 
+            // tbxCUIT2
+            // 
+            this.tbxCUIT2.Location = new System.Drawing.Point(258, 133);
+            this.tbxCUIT2.Name = "tbxCUIT2";
+            this.tbxCUIT2.Size = new System.Drawing.Size(100, 20);
+            this.tbxCUIT2.TabIndex = 5;
+            // 
+            // tbxCUIT3
+            // 
+            this.tbxCUIT3.Location = new System.Drawing.Point(371, 133);
+            this.tbxCUIT3.Name = "tbxCUIT3";
+            this.tbxCUIT3.Size = new System.Drawing.Size(45, 20);
+            this.tbxCUIT3.TabIndex = 6;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(248, 136);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(10, 13);
+            this.label2.TabIndex = 12;
+            this.label2.Text = "-";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(360, 137);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(10, 13);
+            this.label3.TabIndex = 13;
+            this.label3.Text = "-";
+            // 
             // FrmProveedor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -339,7 +379,7 @@
         private System.Windows.Forms.DataGridView dtgProveedores;
         private System.Windows.Forms.TextBox tbxApellido;
         private System.Windows.Forms.TextBox tbxNombre;
-        private System.Windows.Forms.TextBox tbxCUIT;
+        private System.Windows.Forms.TextBox tbxCUIT1;
         private System.Windows.Forms.Label lblCUIT;
         private System.Windows.Forms.Label lblNombre;
         private System.Windows.Forms.Label lblNroProveedor;
@@ -356,5 +396,9 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnGuardar;
         private System.Windows.Forms.Label lblTitulo;
+        private System.Windows.Forms.TextBox tbxCUIT3;
+        private System.Windows.Forms.TextBox tbxCUIT2;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label2;
     }
 }

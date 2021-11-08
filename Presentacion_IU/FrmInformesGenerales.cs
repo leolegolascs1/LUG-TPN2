@@ -32,17 +32,9 @@ namespace Presentacion_IU
             oBEOrdenCompra = new BE_OrdenCompra();
     
         }
-
         private void FrmInformesGenerales_Load(object sender, EventArgs e)
         {
-            // TODO: esta línea de código carga datos en la tabla 'DBDematazoDataSet.TbDetalleCompra' Puede moverla o quitarla según sea necesario.
-            this.TbDetalleCompraTableAdapter.Fill(this.DBDematazoDataSet.TbDetalleCompra);
-            // TODO: esta línea de código carga datos en la tabla 'DBDematazoDataSet.TbPersonal' Puede moverla o quitarla según sea necesario.
-            this.TbPersonalTableAdapter.Fill(this.DBDematazoDataSet.TbPersonal);
-
-            this.reportViewer1.RefreshReport();
             RealizarInforme();
-            this.reportViewer1.RefreshReport();
         }
         private void RealizarInforme() 
         {
@@ -65,5 +57,9 @@ namespace Presentacion_IU
             tbxItemPedidos.Text = cont.ToString();
         }
 
+        private void btnInformarPersonal_Click(object sender, EventArgs e)
+        {
+          
+        }
     }
 }

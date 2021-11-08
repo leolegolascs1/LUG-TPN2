@@ -74,7 +74,7 @@ namespace MPP
 
             SqlParameter Param6 = new SqlParameter();
             Param6.ParameterName = "@Telefono";
-            Param6.Value = pOproveedor.EMail;
+            Param6.Value = pOproveedor.Telefono;
             Param6.SqlDbType = SqlDbType.VarChar;
             AL.Add(Param6);
 

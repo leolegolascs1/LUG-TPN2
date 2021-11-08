@@ -52,7 +52,6 @@ namespace MPP
             oDatos = new Acceso();
             return oDatos.Escribir2(Consulta_SQL, AL);
         }
-
         public bool AgregarItemCompra(BE_OrdenCompra pOrden,BE_Materiales pMaterial, int pCantidad) 
         {
             string Consulta_SQL;
@@ -60,17 +59,6 @@ namespace MPP
 
             oDatos = new Acceso();
             return oDatos.Escribir(Consulta_SQL);
-        }
-        public DataTable ListarTodoTable()
-        //Metodo hace consulta y devuelve un datatable con la informacion.
-        {
-            DataTable dt = new DataTable();
-            string consulta = "Select * FROM TbOrdenCompra";
-
-            oDatos = new Acceso();
-            dt = oDatos.Leer(consulta);
-
-            return dt;
         }
         public bool Baja(BE_OrdenCompra Objeto)
         {
@@ -163,6 +151,7 @@ namespace MPP
 
                             oBEMaterial.Codigo = int.Parse(item["Codigo"].ToString());
                             oBEMaterial.Descripcion_material = (item["Descripcion_Articulo"].ToString());
+                            oBEMaterial.Material = (item["Material"].ToString());
                             oBEDetalleOrden.Item = oBEMaterial;
                      
                             oBEDetalleOrden.Cantidad = int.Parse(item["Cantidad"].ToString());

@@ -42,6 +42,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BLL_DetalleOrdenCompra.cs" />
+    <Compile Include="BLL_ListaPrecioProveedores.cs" />
     <Compile Include="BLL_Material.cs" />
     <Compile Include="BLL_OrdenCompra.cs" />
     <Compile Include="BLL_Personal.cs" />

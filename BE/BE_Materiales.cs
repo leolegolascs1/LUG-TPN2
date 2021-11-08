@@ -27,6 +27,10 @@ namespace BE
         {
             this.Codigo = pCodigo;  
         }
+        public override string ToString()
+        {
+            return this.Descripcion_material + "-" + this.Material;
+        }
 
         #endregion
     }

@@ -86,16 +86,29 @@ namespace Presentacion_IU
             {
                 if (tbxApellido.Text.Length > 0 || tbxNombre.Text.Length > 0 || tbxDocumento.Text.Length > 0 || cbxTipoEmpleado.SelectedItem == null)
                 {
-
-                    //falta control dni
-                    CreoTipoEmpleado();
-                    LLenarObjeto();
-                    if (oBLLPersonal.Guardar(oPersonal))
+                   if( CL_Validar.EsNumerico(tbxDocumento.Text)) 
                     {
-                        MessageBox.Show("Registro Guardado Correctamente", "Modificar", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+
+                        if(CL_Validar.EsTexto(tbxApellido) && CL_Validar.EsTexto(tbxNombre.Text)) 
+                        {
+                            CreoTipoEmpleado();
+                            LLenarObjeto();
+                            if (oBLLPersonal.Guardar(oPersonal))
+                            {
+                                MessageBox.Show("Registro Guardado Correctamente", "Modificar", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                            }
+                            LimpiarCampos();
+                            MostrarGrilla(dtgPersonal, oVista.CargarGridVista(oBLLPersonal.ListarTodo()));
+                        }
+                        else
+                        {
+                            MessageBox.Show("Por Favor Ingrese Datos tipo Texto! en Nombre y Apellido", "Modificar", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                        }
                     }
-                    LimpiarCampos();
-                    MostrarGrilla(dtgPersonal, oVista.CargarGridVista(oBLLPersonal.ListarTodo()));
+                    else
+                    {
+                        MessageBox.Show("Por Favor Ingrese Datos Numéricos en Documento!", "Modificar", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    }           
                 }
                 else
                 {
@@ -104,7 +117,6 @@ namespace Presentacion_IU
             }
             catch (Exception ex)
             {
-
                 throw ex;
             }
         }

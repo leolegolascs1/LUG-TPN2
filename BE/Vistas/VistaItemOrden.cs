@@ -10,7 +10,8 @@ namespace BE.Vistas
     {
         public int IdDetalle { get; set; }
         public int Codigo_Art { get; set; }
-        public string Descripcion { get; set; }  
+        public string Descripcion { get; set; }
+        public string Material { get; set; }
         public string Cantidad { get; set; }
 
         public List<VistaItemOrden> CargarGridVista(List<BE_DetalleOrdenCompra> pLista) //Recorro la lista de beneficiarios y voy generando la lista a mostrar en la grilla
@@ -25,6 +26,7 @@ namespace BE.Vistas
                 vistaN.IdDetalle  = item.Codigo;
                 vistaN.Codigo_Art  = item.Item.Codigo;
                 vistaN.Descripcion = item.Item.Descripcion_material;
+                vistaN.Material = item.Item.Material;
                 vistaN.Cantidad = item.Cantidad.ToString();
 
                 _lstVistaFin.Add(vistaN);

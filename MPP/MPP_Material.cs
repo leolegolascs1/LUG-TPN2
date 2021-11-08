@@ -74,7 +74,7 @@ namespace MPP
                     BE_Materiales oBEMaterial;
                     oBEMaterial = new BE_Materiales();
                     oBEMaterial.Codigo = int.Parse(fila["Codigo"].ToString());
-                    oBEMaterial.Descripcion_material  = (fila["Descripcion_Articulo"].ToString());
+                    oBEMaterial.Descripcion_material  = (fila["Descripcion_Articulo"].ToString()) +"-"+ (fila["Material"].ToString());
                     oBEMaterial.Material = (fila["Material"].ToString());
 
                     Lista.Add(oBEMaterial);
